@@ -167,4 +167,5 @@ cython_debug/
 *.pth
 *.pkg
 /data
+/weights
 .DS_Store
