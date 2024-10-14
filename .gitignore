@@ -164,3 +164,7 @@ cython_debug/
 
 # keys
 *.pem
+*.pth
+*.pkg
+/data
+.DS_Store
