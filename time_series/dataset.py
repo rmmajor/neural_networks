@@ -5,7 +5,13 @@ import pandas as pd
 
 
 class DruglibDataset(Dataset):
-    def __init__(self, reviews: pd.Series, targets: pd.Series, tokenizer: PreTrainedTokenizer, max_len: int):
+    def __init__(
+        self,
+        reviews: pd.Series,
+        targets: pd.Series,
+        tokenizer: PreTrainedTokenizer,
+        max_len: int,
+    ):
         self.reviews = reviews
         self.targets = targets
         self.tokenizer = tokenizer
@@ -23,17 +29,17 @@ class DruglibDataset(Dataset):
             add_special_tokens=True,
             max_length=self.max_len,
             return_token_type_ids=False,
-            padding='max_length',
+            padding="max_length",
             return_attention_mask=True,
-            return_tensors='pt',
-            truncation=True
+            return_tensors="pt",
+            truncation=True,
         )
 
         return {
-            'review_text': review_text,
-            'input_ids': encoding['input_ids'].flatten(),
-            'attention_mask': encoding['attention_mask'].flatten(),
-            'targets': torch.tensor(target, dtype=torch.long)
+            "review_text": review_text,
+            "input_ids": encoding["input_ids"].flatten(),
+            "attention_mask": encoding["attention_mask"].flatten(),
+            "targets": torch.tensor(target, dtype=torch.long),
         }
 
 
